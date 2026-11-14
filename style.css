@@ -81,7 +81,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* gli elementi partono dal centro dello schermo */
+  justify-content: flex-end; /* gli elementi sono allineati al margine destro */
   gap: clamp(16px, 2.2vw, 36px);
 }
 
@@ -162,7 +162,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   padding: 0 var(--gutter);
 }
 
-/* Il titolo è il solo elemento che occupa il centro; il pulsante è posizionato sotto */
+/* Il titolo è il solo elemento che occupa il centro; pay off e pulsante sono posizionati sotto */
 .hero-content {
   position: relative;
   text-align: center;
@@ -176,11 +176,27 @@ ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: -0.02em;
 }
 
-.btn-primary {
+.hero-below {
   position: absolute;
-  top: calc(100% + 32px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--gutter));
+}
+
+.hero-payoff {
+  margin: 16px 0 0;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  margin-top: 32px;
   display: inline-block;
   padding: 14px 36px;
   border-radius: 999px;
