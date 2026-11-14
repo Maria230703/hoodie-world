@@ -175,42 +175,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   opacity: 0.25;
 }
 
-/* Il titolo è il solo elemento che occupa il centro; pay off e pulsante sono posizionati sotto */
-.hero-content {
-  position: relative;
-  text-align: center;
-  text-shadow: 0 2px 12px rgba(35, 70, 73, 0.6); /* leggibilità del testo sopra l'immagine */
-}
-
-.hero-title {
-  margin: 0;
-  font-weight: 800;
-  font-size: clamp(2.75rem, 9vw, 7rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.hero-below {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: max-content;
-  max-width: calc(100vw - 2 * var(--gutter));
-}
-
-.hero-payoff {
-  margin: 16px 0 0;
-  font-weight: 400;
-  font-size: clamp(1.05rem, 2.2vw, 1.5rem);
-  letter-spacing: 0.01em;
-}
-
+/* Il pulsante "Buy now" è al centro esatto dello schermo */
 .btn-primary {
-  margin-top: 32px;
   display: inline-block;
   padding: 14px 36px;
   border-radius: 999px;
@@ -221,7 +187,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: 0.04em;
   text-decoration: none;
   white-space: nowrap;
-  text-shadow: none;
   transition: background-color 0.2s ease;
 }
 
@@ -356,9 +321,5 @@ ul { list-style: none; margin: 0; padding: 0; }
   .icon-button {
     margin: 6px 0;
     border-radius: 8px;
-  }
-
-  .hero-title {
-    font-size: clamp(2.5rem, 13vw, 3.5rem);
   }
 }
