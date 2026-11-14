@@ -175,8 +175,13 @@ ul { list-style: none; margin: 0; padding: 0; }
   opacity: 0.25;
 }
 
-/* Il pulsante "Buy now" è al centro esatto dello schermo */
+/* Il pulsante "Buy now" è centrato in orizzontale e posizionato sotto la scritta
+   ricamata sulla felpa (che nell'immagine termina a circa il 55% dell'altezza) */
 .btn-primary {
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: inline-block;
   padding: 14px 36px;
   border-radius: 999px;
