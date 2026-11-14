@@ -1,0 +1,333 @@
+/* ===== Palette e variabili ===== */
+:root {
+  --petrol: #2f5d62;        /* Soft Petrol */
+  --petrol-dark: #234649;
+  --cream: #f5ebdd;         /* Warm Cream */
+  --terracotta: #9c4f37;    /* Dusty Terracotta (scurita per il contrasto con il crema) */
+  --terracotta-dark: #84412d;
+
+  --font: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --header-h: 72px;
+  --gutter: 32px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--petrol);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--cream);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===== Barra di navigazione ===== */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  height: var(--header-h);
+  background: var(--petrol);
+  color: var(--cream);
+  border-bottom: 1px solid rgba(245, 235, 221, 0.15);
+}
+
+.header-inner {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* metà sinistra: logo / metà destra: menu */
+  align-items: center;
+}
+
+.brand-half {
+  padding-left: var(--gutter);
+}
+
+.brand-logo {
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.main-nav {
+  height: 100%;
+  padding-right: var(--gutter);
+}
+
+.nav-list {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* gli elementi partono dal centro dello schermo */
+  gap: clamp(16px, 2.2vw, 36px);
+}
+
+.nav-link {
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.nav-link:hover {
+  border-bottom-color: var(--cream);
+}
+
+.icon-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.icon-button:hover {
+  background: rgba(245, 235, 221, 0.12);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--terracotta);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+
+/* Pulsante del menu: visibile solo su telefono */
+.menu-toggle {
+  display: none;
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center; /* centro esatto dello schermo */
+  background: var(--petrol);
+  color: var(--cream);
+  padding: 0 var(--gutter);
+}
+
+/* Il titolo è il solo elemento che occupa il centro; il pulsante è posizionato sotto */
+.hero-content {
+  position: relative;
+  text-align: center;
+}
+
+.hero-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(2.75rem, 9vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.btn-primary {
+  position: absolute;
+  top: calc(100% + 32px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: var(--terracotta);
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-dark);
+}
+
+/* ===== Sezioni segnaposto ===== */
+.placeholder-section {
+  min-height: 60vh;
+  padding: 80px var(--gutter);
+  scroll-margin-top: var(--header-h);
+  border-top: 1px solid rgba(47, 93, 98, 0.15);
+}
+
+.placeholder-section h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+}
+
+.placeholder-section :focus-visible {
+  outline-color: var(--petrol);
+}
+
+/* ===== Tablet / iPad (600px – 1023px) ===== */
+@media (max-width: 1023px) {
+  :root {
+    --gutter: 24px;
+    --header-h: 64px;
+  }
+
+  /* Il logo occupa solo lo spazio necessario; il menu si adatta allo spazio rimanente */
+  .header-inner {
+    grid-template-columns: auto 1fr;
+  }
+
+  .nav-list {
+    justify-content: flex-end;
+    gap: clamp(8px, 1.8vw, 24px);
+  }
+
+  .nav-link {
+    font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+  }
+
+  .icon-button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ===== Telefono (< 600px) ===== */
+@media (max-width: 599px) {
+  :root {
+    --gutter: 16px;
+    --header-h: 60px;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: calc(var(--gutter) - 6px);
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+  }
+
+  .menu-toggle .icon-close { display: none; }
+  .menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+  .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+  .main-nav {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    height: auto;
+    padding: 0;
+    background: var(--petrol);
+    border-bottom: 1px solid rgba(245, 235, 221, 0.15);
+    display: none;
+  }
+
+  .main-nav.is-open {
+    display: block;
+  }
+
+  .nav-list {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--gutter) 16px;
+  }
+
+  .nav-list li {
+    border-bottom: 1px solid rgba(245, 235, 221, 0.12);
+  }
+
+  .nav-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 14px 0;
+    font-size: 1rem;
+    border-bottom: 0;
+  }
+
+  .nav-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* Carrello e cuore nel menu: allineati a sinistra come le voci */
+  .icon-button {
+    margin: 6px 0;
+    border-radius: 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 13vw, 3.5rem);
+  }
+}
