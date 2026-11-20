@@ -3,7 +3,6 @@
   --petrol: #2f5d62;        /* Soft Petrol */
   --petrol-dark: #234649;
   --petrol-deep: #142b2e;   /* testo sulla barra promo, per il contrasto */
-  --promo-h: 44px;          /* valore di riserva: script.js lo sostituisce con l'altezza reale */
   --cream: #f5ebdd;         /* Warm Cream */
   --terracotta: #9c4f37;    /* Dusty Terracotta (scurita per il contrasto con il crema) */
   --terracotta-dark: #84412d;
@@ -37,19 +36,6 @@ body {
 }
 
 ul { list-style: none; margin: 0; padding: 0; }
-
-/* Testo leggibile solo da lettori di schermo e motori di ricerca */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 
 :focus-visible {
   outline: 3px solid var(--cream);
@@ -160,8 +146,13 @@ ul { list-style: none; margin: 0; padding: 0; }
   text-align: center;
 }
 
-/* ===== Barra promo: striscia bianca semitrasparente (opacità 60%) ===== */
+/* ===== Barra promo: striscia bianca semitrasparente (opacità 60%) =====
+   Sta subito sotto la barra verde, in cima alla hero, e scorre via con la pagina */
 .promo-bar {
+  position: absolute;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
   background: rgba(255, 255, 255, 0.6);
   padding: 10px var(--gutter);
   text-align: center;
@@ -233,7 +224,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .placeholder-section {
   min-height: 60vh;
   padding: 80px var(--gutter);
-  scroll-margin-top: calc(var(--header-h) + var(--promo-h));
+  scroll-margin-top: var(--header-h);
   border-top: 1px solid rgba(47, 93, 98, 0.15);
 }
 
@@ -279,7 +270,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   :root {
     --gutter: 16px;
     --header-h: 60px;
-    --promo-h: 62px; /* riserva per telefono (frase su due righe) */
   }
 
   .header-inner {
@@ -314,7 +304,6 @@ ul { list-style: none; margin: 0; padding: 0; }
     top: var(--header-h);
     left: 0;
     right: 0;
-    z-index: 1; /* il menu aperto copre la barra promo */
     height: auto;
     padding: 0;
     background: var(--petrol);

@@ -1,19 +1,3 @@
-// Altezza reale della barra promo: aggiorna --promo-h (usata dallo scorrimento
-// verso le sezioni) quando la frase va a capo su più righe
-(function () {
-  const promo = document.querySelector(".promo-bar");
-  if (!promo) return;
-
-  function updatePromoHeight() {
-    document.documentElement.style.setProperty("--promo-h", promo.offsetHeight + "px");
-  }
-
-  updatePromoHeight();
-  window.addEventListener("resize", updatePromoHeight);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(updatePromoHeight);
-  if ("ResizeObserver" in window) new ResizeObserver(updatePromoHeight).observe(promo);
-})();
-
 // Menu compatto su telefono: apertura/chiusura accessibile
 (function () {
   const toggle = document.querySelector(".menu-toggle");
