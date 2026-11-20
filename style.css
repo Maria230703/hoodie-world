@@ -167,6 +167,56 @@ ul { list-style: none; margin: 0; padding: 0; }
   line-height: 1.4;
 }
 
+/* Il codice sconto è un pulsante che copia il codice, ma resta identico al testo intorno */
+.promo-code {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.promo-code:focus-visible {
+  outline-color: var(--petrol-deep);
+}
+
+/* Messaggio vicino al cursore: "Copy and use it" / "Have a chic shopping" */
+.promo-tip {
+  position: fixed;
+  z-index: 20;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--petrol-deep);
+  color: var(--cream);
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(20, 43, 46, 0.25);
+}
+
+.promo-tip[hidden] {
+  display: none;
+}
+
+/* Testo leggibile solo da lettori di schermo (annuncio "codice copiato") */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Pulsante del menu: visibile solo su telefono */
 .menu-toggle {
   display: none;

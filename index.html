@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <header class="site-header">
@@ -56,7 +56,8 @@
   <main>
     <section class="hero">
       <div class="promo-bar">
-        <p class="promo-text">Use NewChicOne to get 10% discount for your first purchase!</p>
+        <p class="promo-text">Use <button class="promo-code" type="button" data-code="NewChicOne" aria-label="NewChicOne, copy discount code">NewChicOne</button> to get 10% discount for your first purchase!</p>
+        <span class="sr-only" role="status" aria-live="polite" id="promo-status"></span>
       </div>
       <a class="btn-primary" href="#collection">Buy now</a>
     </section>
@@ -74,6 +75,6 @@
     </section>
   </main>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>

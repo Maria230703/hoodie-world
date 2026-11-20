@@ -1,3 +1,96 @@
+// Codice sconto: un clic copia il codice negli appunti
+(function () {
+  const button = document.querySelector(".promo-code");
+  const status = document.getElementById("promo-status");
+  if (!button) return;
+
+  function fallbackCopy(text) {
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.appendChild(field);
+    field.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(field);
+    return ok ? Promise.resolve() : Promise.reject(new Error("copy failed"));
+  }
+
+  // Messaggio che segue il cursore: "Copy and use it" al passaggio,
+  // "Have a chic shopping" dopo la copia
+  const TEXT_HOVER = "Copy and use it";
+  const TEXT_COPIED = "Have a chic shopping";
+  const tip = document.createElement("div");
+  tip.className = "promo-tip";
+  tip.setAttribute("aria-hidden", "true"); // i lettori di schermo usano #promo-status
+  tip.hidden = true;
+  document.body.appendChild(tip);
+  let hideTimer = null;
+
+  function placeTip(x, y) {
+    const offset = 16;
+    const maxX = window.innerWidth - tip.offsetWidth - 8;
+    const maxY = window.innerHeight - tip.offsetHeight - 8;
+    tip.style.left = Math.max(8, Math.min(x + offset, maxX)) + "px";
+    tip.style.top = Math.max(8, Math.min(y + offset, maxY)) + "px";
+  }
+
+  function showTip(text, x, y) {
+    clearTimeout(hideTimer);
+    tip.textContent = text;
+    tip.hidden = false;
+    placeTip(x, y);
+  }
+
+  function hideTip() {
+    clearTimeout(hideTimer);
+    tip.hidden = true;
+  }
+
+  // Posizione di riserva (tastiera): sotto il pulsante
+  function buttonPoint() {
+    const r = button.getBoundingClientRect();
+    return { x: r.left, y: r.bottom - 8 };
+  }
+
+  button.addEventListener("pointerenter", function (e) {
+    if (e.pointerType === "mouse" || e.pointerType === "pen") showTip(TEXT_HOVER, e.clientX, e.clientY);
+  });
+  button.addEventListener("pointermove", function (e) {
+    if (!tip.hidden && (e.pointerType === "mouse" || e.pointerType === "pen")) placeTip(e.clientX, e.clientY);
+  });
+  button.addEventListener("pointerleave", function (e) {
+    if (e.pointerType === "mouse" || e.pointerType === "pen") hideTip();
+  });
+  button.addEventListener("focus", function () {
+    if (button.matches(":focus-visible")) {
+      const p = buttonPoint();
+      showTip(TEXT_HOVER, p.x, p.y);
+    }
+  });
+  button.addEventListener("blur", hideTip);
+
+  button.addEventListener("click", function (e) {
+    const code = button.dataset.code;
+    const copy = navigator.clipboard && window.isSecureContext
+      ? navigator.clipboard.writeText(code).catch(function () { return fallbackCopy(code); })
+      : fallbackCopy(code);
+
+    // Coordinate del clic o del tocco; da tastiera (0,0) si usa il pulsante
+    const p = e.clientX || e.clientY ? { x: e.clientX, y: e.clientY } : buttonPoint();
+
+    copy
+      .then(function () {
+        if (status) status.textContent = "Code " + code + " copied";
+        showTip(TEXT_COPIED, p.x, p.y);
+        // Su telefono non c'è il passaggio del cursore: il messaggio sparisce da solo
+        hideTimer = setTimeout(hideTip, 2500);
+      })
+      .catch(function () { if (status) status.textContent = "Could not copy the code"; });
+  });
+})();
+
 // Menu compatto su telefono: apertura/chiusura accessibile
 (function () {
   const toggle = document.querySelector(".menu-toggle");
