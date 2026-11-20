@@ -38,13 +38,19 @@ Opening `index.html` directly also works.
 
 ## Design tokens
 
-Colors live in `:root`:
-- `--petrol` (Soft Petrol `#2f5d62`): navbar and hero background;
+Colors live in `:root`, and these three are the only ones:
+- `--petrol` (Soft Petrol `#2f5d62`): navbar and hero background, text on cream and on the promo bar;
 - `--cream` (Warm Cream `#f5ebdd`): text on petrol and section backgrounds;
-- `--terracotta` (Dusty Terracotta `#9c4f37`, darkened for WCAG AA contrast with cream): button and badges;
-- `--petrol-deep`: text on the white promo bar.
+- `--terracotta` (Dusty Terracotta `#9c4f37`): "Buy now" button, badges and the cursor tip ("Copy and use it" / "Have a chic shopping"), which must match the "Buy now" CTA.
 
-The font is Manrope (Google Fonts) with a system sans-serif fallback. The promo bar is `rgba(255,255,255,0.6)`.
+The promo bar is `rgba(255,255,255,0.6)` (white, named by the owner). There are no hover color changes, shadows or translucent borders, because they would add colors outside the palette.
+
+The font is Manrope 400 only (Google Fonts loads just that weight), with a system sans-serif fallback. `<button>`s get the site font through a `button { font: inherit; }` reset.
+
+## Typography and color rules (set by the owner)
+
+- **One font for the whole site**: Manrope. Never bold and never italic.
+- **Only the original palette colors**: Soft Petrol, Warm Cream and Dusty Terracotta. Use no other color (including tints, shades, hover variants or shadow colors) unless the owner names it explicitly. White for the promo bar was named explicitly.
 
 ## Working conventions requested by the owner
 

@@ -1,11 +1,9 @@
 /* ===== Palette e variabili ===== */
 :root {
+  /* Solo i colori della palette originale (più il bianco della barra promo, indicato dalla committente) */
   --petrol: #2f5d62;        /* Soft Petrol */
-  --petrol-dark: #234649;
-  --petrol-deep: #142b2e;   /* testo sulla barra promo, per il contrasto */
   --cream: #f5ebdd;         /* Warm Cream */
-  --terracotta: #9c4f37;    /* Dusty Terracotta (scurita per il contrasto con il crema) */
-  --terracotta-dark: #84412d;
+  --terracotta: #9c4f37;    /* Dusty Terracotta */
 
   --font: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --header-h: 72px;
@@ -30,12 +28,27 @@ html {
 body {
   margin: 0;
   font-family: var(--font);
+  font-weight: 400;
+  font-style: normal;
   color: var(--petrol);
   background: var(--cream);
   -webkit-font-smoothing: antialiased;
 }
 
 ul { list-style: none; margin: 0; padding: 0; }
+
+/* I pulsanti non ereditano il font dal browser: li allineiamo al resto del sito */
+button {
+  font: inherit;
+}
+
+h1, h2, h3, strong, b {
+  font-weight: 400;
+}
+
+em, i {
+  font-style: normal;
+}
 
 :focus-visible {
   outline: 3px solid var(--cream);
@@ -54,7 +67,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .header-inner {
   height: var(--header-h);
   background: var(--petrol);
-  border-bottom: 1px solid rgba(245, 235, 221, 0.15);
   display: grid;
   grid-template-columns: 1fr 1fr; /* metà sinistra: logo / metà destra: menu */
   align-items: center;
@@ -65,8 +77,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 .brand-logo {
-  font-style: italic;
-  font-weight: 800;
   font-size: 1.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -88,7 +98,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .nav-link {
   color: var(--cream);
   text-decoration: none;
-  font-weight: 500;
   font-size: 0.95rem;
   white-space: nowrap;
   padding: 6px 0;
@@ -113,11 +122,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   background: transparent;
   color: var(--cream);
   cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.icon-button:hover {
-  background: rgba(245, 235, 221, 0.12);
 }
 
 .icon {
@@ -141,7 +145,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   background: var(--terracotta);
   color: var(--cream);
   font-size: 0.7rem;
-  font-weight: 700;
   line-height: 18px;
   text-align: center;
 }
@@ -160,8 +163,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .promo-text {
   margin: 0;
-  color: var(--petrol-deep);
-  font-weight: 700;          /* stesso font e peso di "Buy now" */
+  color: var(--petrol);
   font-size: clamp(0.8rem, 1.6vw, 1rem);
   letter-spacing: 0.04em;
   line-height: 1.4;
@@ -173,14 +175,13 @@ ul { list-style: none; margin: 0; padding: 0; }
   padding: 0;
   border: 0;
   background: none;
-  font: inherit;
   letter-spacing: inherit;
   color: inherit;
   cursor: pointer;
 }
 
 .promo-code:focus-visible {
-  outline-color: var(--petrol-deep);
+  outline-color: var(--petrol);
 }
 
 /* Messaggio vicino al cursore: "Copy and use it" / "Have a chic shopping" */
@@ -189,15 +190,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   z-index: 20;
   padding: 6px 12px;
   border-radius: 999px;
-  background: var(--petrol-deep);
+  background: var(--terracotta); /* stesso colore del pulsante "Buy now" */
   color: var(--cream);
-  font-family: var(--font);
-  font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.02em;
   white-space: nowrap;
   pointer-events: none;
-  box-shadow: 0 4px 14px rgba(20, 43, 46, 0.25);
 }
 
 .promo-tip[hidden] {
@@ -258,16 +256,10 @@ ul { list-style: none; margin: 0; padding: 0; }
   border-radius: 999px;
   background: var(--terracotta);
   color: var(--cream);
-  font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.04em;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: var(--terracotta-dark);
 }
 
 /* ===== Sezioni segnaposto ===== */
@@ -275,13 +267,11 @@ ul { list-style: none; margin: 0; padding: 0; }
   min-height: 60vh;
   padding: 80px var(--gutter);
   scroll-margin-top: var(--header-h);
-  border-top: 1px solid rgba(47, 93, 98, 0.15);
 }
 
 .placeholder-section h2 {
   margin: 0;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
 }
 
 .placeholder-section :focus-visible {
@@ -357,7 +347,6 @@ ul { list-style: none; margin: 0; padding: 0; }
     height: auto;
     padding: 0;
     background: var(--petrol);
-    border-bottom: 1px solid rgba(245, 235, 221, 0.15);
     display: none;
   }
 
@@ -371,14 +360,6 @@ ul { list-style: none; margin: 0; padding: 0; }
     align-items: stretch;
     gap: 0;
     padding: 8px var(--gutter) 16px;
-  }
-
-  .nav-list li {
-    border-bottom: 1px solid rgba(245, 235, 221, 0.12);
-  }
-
-  .nav-list li:last-child {
-    border-bottom: 0;
   }
 
   .nav-link {
