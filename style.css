@@ -240,12 +240,12 @@ em, i {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url("images/hero-bg.jpg") center / cover no-repeat;
+  background: url("images/hero-bg.jpg?v=2") center / cover no-repeat;
   opacity: 0.25;
 }
 
 /* Il pulsante "Buy now" è centrato in orizzontale e posizionato sotto la scritta
-   ricamata sulla felpa (che nell'immagine termina a circa il 55% dell'altezza) */
+   ricamata sulla felpa (che nell'immagine termina a circa il 50% dell'altezza) */
 .btn-primary {
   position: absolute;
   top: 68%;
