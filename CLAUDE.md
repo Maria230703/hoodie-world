@@ -22,7 +22,7 @@ Opening `index.html` directly also works.
 
 ## Architecture
 
-- **Header**: `.site-header` is `position: fixed`. It contains `.header-inner`, the Soft Petrol bar (the background is on `.header-inner`, not on the header). The bar is a 2-column grid: the uppercase "HW" logo on the left (regular weight, not italic) and `.main-nav` on the right, with items aligned to the right margin. Order: Who we are → See Our Collection → Contact us → cart button → favorites button. Cart and favorites are `<button>`s with SVG icons, a counter fixed at `0` and an `aria-label`. They have no click behavior yet; it is still undecided.
+- **Header**: `.site-header` is `position: fixed`. It contains `.header-inner`, the Soft Petrol bar (the background is on `.header-inner`, not on the header). The bar is a 2-column grid: the uppercase "DDSC" logo on the left (regular weight, not italic) and `.main-nav` on the right, with items aligned to the right margin. Order: Who we are → See Our Collection → Contact us → cart button → favorites button. Cart and favorites are `<button>`s with SVG icons, a counter fixed at `0` and an `aria-label`. They have no click behavior yet; it is still undecided.
 - **Hero** (`.hero`): full viewport height (`100svh`). The background photo is `.hero::before`, at `opacity: 0.25` over Soft Petrol. The hero contains:
   - `.promo-bar`, absolutely positioned at `top: var(--header-h)`, so it sits right under the fixed navbar and scrolls away with the page;
   - the "Buy now" link (`.btn-primary`, goes to `#collection`), absolutely placed at `top: 68%` so it sits **below** the "Dress Down, Stay Chic" print on the hoodie in the photo. If you change the image or its cropping, re-check that the button does not cover the print.
