@@ -274,6 +274,33 @@ em, i {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
 }
 
+/* ===== Who we are: testo della presentazione in una colonna leggibile ===== */
+.about-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.about-lead {
+  margin: 16px 0 32px;
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  line-height: 1.4;
+  color: var(--terracotta);
+}
+
+.about p:not(.about-lead) {
+  margin: 0 0 20px;
+  font-size: clamp(1rem, 1.4vw, 1.0625rem);
+  line-height: 1.75;
+  /* Testo giustificato; la sillabazione evita spazi troppo larghi nelle colonne strette */
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}
+
 .placeholder-section :focus-visible {
   outline-color: var(--petrol);
 }
