@@ -444,10 +444,12 @@ em, i {
 }
 
 .site-footer p {
-  max-width: 680px;
-  margin: 0 auto;
-  font-size: 0.8rem;
+  margin: 0;
+  /* Sempre su una riga: il testo è largo circa 64em, quindi la dimensione
+     scende con la larghezza dello schermo (al massimo 0.8rem) */
+  font-size: min(0.8rem, calc((100vw - 2 * var(--gutter)) / 64));
   line-height: 1.6;
+  white-space: nowrap;
   color: var(--petrol);
 }
 
@@ -506,6 +508,12 @@ em, i {
     background: transparent;
     color: var(--cream);
     cursor: pointer;
+  }
+
+  /* Footer: su telefono il testo va a capo per restare leggibile */
+  .site-footer p {
+    font-size: 0.8rem;
+    white-space: normal;
   }
 
   .menu-toggle .icon-close { display: none; }
