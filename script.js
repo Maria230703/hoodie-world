@@ -129,3 +129,70 @@
     if (e.matches) setOpen(false);
   });
 })();
+
+// Scheda "Collaborate with us": modulo B2B dentro la pagina.
+// "Send" apre il programma di posta dell'utente con l'email già compilata per ddschic@gmail.com
+(function () {
+  const openButton = document.querySelector(".btn-collab");
+  const dialog = document.getElementById("collab-dialog");
+  if (!openButton || !dialog || typeof dialog.showModal !== "function") return;
+
+  const form = dialog.querySelector(".collab-form");
+  const closeButton = dialog.querySelector(".dialog-close");
+  const RECIPIENT = "ddschic@gmail.com";
+
+  openButton.addEventListener("click", function () {
+    dialog.showModal();
+  });
+
+  closeButton.addEventListener("click", function () {
+    dialog.close();
+  });
+
+  // Clic fuori dalla scheda: si chiude (Esc la chiude già in automatico)
+  dialog.addEventListener("click", function (e) {
+    if (e.target === dialog) {
+      const r = dialog.getBoundingClientRect();
+      const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dialog.close();
+    }
+  });
+
+  // Alla chiusura il focus torna sul pulsante che ha aperto la scheda
+  dialog.addEventListener("close", function () {
+    openButton.focus();
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    form.classList.add("was-submitted");
+
+    if (!form.checkValidity()) {
+      const firstInvalid = form.querySelector(":invalid");
+      if (firstInvalid) firstInvalid.focus();
+      form.reportValidity();
+      return;
+    }
+
+    const data = new FormData(form);
+    const name = data.get("name").trim();
+    const company = data.get("company").trim();
+    const subject = data.get("type") + " – " + (company || name);
+    const body = [
+      "Full name: " + name,
+      "Company: " + company,
+      "Email: " + data.get("email").trim(),
+      "Request type: " + data.get("type"),
+      "",
+      data.get("message").trim()
+    ].join("\n");
+
+    window.location.href = "mailto:" + RECIPIENT +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+
+    form.reset();
+    form.classList.remove("was-submitted");
+    dialog.close();
+  });
+})();

@@ -43,7 +43,7 @@ Colors live in `:root`, and these three are the only ones:
 - `--cream` (Warm Cream `#f5ebdd`): text on petrol and section backgrounds;
 - `--terracotta` (Dusty Terracotta `#9c4f37`): "Buy now" button, badges and the cursor tip ("Copy and use it" / "Have a chic shopping"), which must match the "Buy now" CTA.
 
-The promo bar is `rgba(255,255,255,0.6)` (white, named by the owner). There are no hover color changes, shadows or translucent borders, because they would add colors outside the palette.
+The promo bar is `rgba(255,255,255,0.6)` and the "Collaborate with us" dialog is solid `#ffffff` (white, named by the owner for both). There are no hover color changes, shadows or translucent borders, because they would add colors outside the palette.
 
 The font is Manrope 400 only (Google Fonts loads just that weight), with a system sans-serif fallback. `<button>`s get the site font through a `button { font: inherit; }` reset.
 

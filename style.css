@@ -301,8 +301,154 @@ em, i {
   margin-bottom: 0;
 }
 
+/* ===== Contact us ===== */
+.contact-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Icone social una di fianco all'altra, sotto il titolo */
+.social-list {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--petrol);
+  border-radius: 50%;
+  color: var(--petrol);
+}
+
+.social-link .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-email {
+  margin: 24px 0 0;
+  font-size: clamp(1rem, 1.4vw, 1.0625rem);
+}
+
+.contact-email a {
+  color: var(--petrol);
+  text-underline-offset: 4px;
+}
+
+/* "Collaborate with us": stesso aspetto del pulsante "Buy now" */
+.btn-collab,
+.btn-send {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--terracotta);
+  color: var(--cream);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-collab {
+  margin-top: 24px;
+}
+
+/* ===== Scheda "Collaborate with us" (modulo B2B) ===== */
+.collab-dialog {
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 48px 28px 28px;
+  border: 1.5px solid var(--petrol);
+  border-radius: 16px;
+  background: #ffffff; /* bianco, indicato dalla committente per staccare la scheda dal panna */
+  color: var(--petrol);
+}
+
+/* Nessuno sfondo scuro dietro la scheda: niente colori fuori palette */
+.collab-dialog::backdrop {
+  background: transparent;
+}
+
+.collab-dialog :focus-visible {
+  outline-color: var(--petrol);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--petrol);
+  cursor: pointer;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 0.9rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--petrol);
+  border-radius: 8px;
+  background: var(--cream);
+  color: var(--petrol);
+  font: inherit;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+/* Campo obbligatorio non compilato dopo un tentativo di invio */
+.collab-form.was-submitted :invalid {
+  border-color: var(--terracotta);
+  border-width: 2px;
+}
+
+.btn-send {
+  margin-top: 8px;
+}
+
 .placeholder-section :focus-visible {
   outline-color: var(--petrol);
+}
+
+/* ===== Footer: nota discreta e centrata (Soft Petrol su panna, contrasto circa 6:1) ===== */
+.site-footer {
+  padding: 32px var(--gutter);
+  text-align: center;
+}
+
+.site-footer p {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--petrol);
 }
 
 /* ===== Tablet / iPad (600px – 1023px) ===== */
